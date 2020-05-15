@@ -1,0 +1,30 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+    /* == BACKGROUND COLOR ==== */
+    --color-night: #052957;
+    --color-sunset: #7E88B2;
+    --color-sunrise: #788692;
+
+    /* == TEXT COLOR == */
+    --color-text: #2B2B2B;
+    --color-white: #F7F7F7;
+
+    /* == WHEEL ROTATIONS == */
+    --wheel-rotation: 0deg;
+}
+
+/* ===== SCREEN MEDIA ===== */
+$small: 520px;
+$medium: 768px;
+$large: 1024px;
+$xl: 1440px;
+$xxl: 1700px;
+
+/* ===== MARGIN ===== */
+$margin: 6px;
+
+/* ===== TRANSITIONS ===== */
+$transition-time: 2s;
+$transition-easing: linear;
+$transition-skybackground: background $transition-time $transition-easing,
+                        color $transition-time $transition-easing;

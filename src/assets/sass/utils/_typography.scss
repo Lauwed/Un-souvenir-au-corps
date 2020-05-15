@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Spart';
+    src: url('./../font/Sprat_Variable.ttf');
+}
+@font-face {
+    font-family: 'Spart';
+    src: url('./../font/Sprat_Variable.ttf');
+}
+
+body {
+    @include font-regular;
+    color: var(--color-text);
+    font-size: 1.125rem; /* 18px */
+
+    @include screen-medium {
+        font-size: 1.3125rem; /* 21px */
+    }
+}
+
+h1, h2, h3 {
+    margin: 0 0 $margin 0;
+
+    @include screen-medium {
+        margin: 0 0 $margin*2 0;
+    }
+}
+h1 {
+    @include font-extended;
+    font-size: 2.25rem; /* 36px */
+
+    margin: 0 0 $margin 0;
+
+    @include screen-medium {
+        font-size: 2.6875rem; /* 43px */
+    }
+}
+h2, h3 {
+    @include font-condensed;
+}
+h2 {
+    font-size: 1.875rem; /* 30px */
+    @include screen-medium {
+        font-size: 2.25rem; /* 36px */
+    }
+}
+h3 {
+    font-size: 1.5625rem; /* 25px */
+    margin-top: $margin*4;
+    @include screen-medium {
+        font-size: 1.875rem; /* 30px */
+        margin-top: $margin*5;
+    }
+}
+
+.bold {
+    font-variation-settings: 'wght' 100, 'wdth' 175;
+}
+.light {
+    font-variation-settings: 'wght' 100, 'wdth' 100;
+}

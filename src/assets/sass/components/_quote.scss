@@ -1,0 +1,38 @@
+blockquote {
+    margin: $margin*2 0;
+
+    h1 + & {
+        margin: 0;
+    }
+
+    p {
+        font-variation-settings: 'wght' 100, 'wdth' 300;
+        white-space: pre-line;
+        position: relative;
+        display: inline-block;
+
+        &::before, &::after {
+            position: absolute;
+            color: var(--color-text);
+            transition: $transition-skybackground;
+        }
+        &::before {
+            content: "«";
+            top: 0;
+            left: -$margin*2;
+
+            @include screen-medium {
+                left: -$margin*4;
+            }
+        }
+        &::after {
+            content: "»";
+            bottom: 0;
+            right: -$margin*2;
+
+            @include screen-medium {
+                right: -$margin*4;
+            }
+        }
+    }
+}

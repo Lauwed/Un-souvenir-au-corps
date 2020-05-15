@@ -1,0 +1,40 @@
+/* ===== FONT VARIATIONS ===== */
+@mixin font-regular {
+    font-family: 'Spart', serif;
+    font-variation-settings: 'wght' 100, 'wdth' 130;
+}
+@mixin font-condensed {
+    font-family: 'Spart', serif;
+    font-variation-settings: 'wght' 300, 'wdth' 100;
+}
+@mixin font-extended {
+    font-family: 'Spart', serif;
+    font-variation-settings: 'wght' 300, 'wdth' 300;
+}
+
+/* ===== SCREEN MEDIAS ===== */
+@mixin screen-small {
+    @media screen and (max-width: #{$small}) {
+        @content;
+    }
+}
+@mixin screen-medium {
+    @media screen and (min-width: #{$medium}) {
+        @content;
+    }
+}
+@mixin screen-large {
+    @media screen and (min-width: #{$large}) {
+        @content;
+    }
+}
+@mixin screen-xl {
+    @media screen and (min-width: #{$xl}) {
+        @content;
+    }
+}
+@mixin screen-xxl {
+    @media screen and (min-width: #{$xxl}) {
+        @content;
+    }
+}

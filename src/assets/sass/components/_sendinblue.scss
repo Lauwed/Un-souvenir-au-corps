@@ -1,0 +1,75 @@
+
+.sib-form {
+    padding: 0;
+    @include font-regular;
+    margin-top: $margin*3;
+}
+
+#sib-container {
+    padding: 0;
+    background: transparent;
+
+    .sib-input {
+        padding: 0;
+
+        .entry__field {
+            margin: 0;
+            background: transparent;
+            border: 0;
+
+            .input {
+                padding: $margin $margin*2;
+                border: 1px solid var(--color-text);
+                border-radius: 2px;
+
+                transition: border $transition-time $transition-easing;
+
+                @include screen-medium {
+                    padding: $margin $margin*4;
+                }
+            }
+        }
+
+        .entry__specification {
+            margin: $margin 0 0;
+            font-size: .875rem;
+            color: var(--color-text);
+            transition: $transition-skybackground;
+        }
+    }
+    .sib-form-block {
+        padding: $margin*3 0 0;
+
+        &__button {
+            width: 100%;
+            border: 0;
+            background-color: var(--color-text);
+            color: var(--color-sunrise);
+            @include font-extended;
+            font-size: 1.125rem;
+            cursor: pointer;
+
+            transition: all .3s ease-out;
+
+            &:hover, &:focus {
+                background-color: var(--color-white);
+                color: var(--color-text);
+            }
+        }
+    }
+
+    input:-ms-input-placeholder {
+        text-align: left;
+        border-width: px;
+        color: var(--color-text);
+        transition: $transition-skybackground;
+        opacity: .5;
+    }
+    input::placeholder {
+        text-align: left;
+        border-width: px;
+        color: var(--color-text);
+        transition: $transition-skybackground;
+        opacity: .5;
+    }
+}

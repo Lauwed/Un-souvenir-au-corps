@@ -1,0 +1,21 @@
+ul {
+    margin: $margin*2 0;
+
+    li {
+        position: relative;
+
+        &::before {
+            content: '—';
+            position: absolute;
+            left: -$margin*3;
+
+            @include screen-medium {
+                left: -$margin*4;
+            }
+        }
+    }
+
+    @include screen-medium {
+        margin: $margin*3 0;
+    }
+}

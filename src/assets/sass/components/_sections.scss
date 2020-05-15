@@ -1,0 +1,24 @@
+body {
+    padding: $margin*5 $margin*5 $margin*20;
+
+    @include screen-medium {
+        padding: $margin*10 $margin*10 $margin*40;
+    }
+
+    @include screen-large {
+        padding: $margin*20 $margin*20 $margin*20 $margin*60;
+    }
+}
+
+section, footer {
+    margin-top: $margin*6;
+
+    @include screen-medium {
+        margin-top: $margin*8;
+    }
+}
+
+footer {
+    text-align: center;
+    font-size: 1rem;
+}

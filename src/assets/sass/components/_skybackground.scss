@@ -1,0 +1,13 @@
+.js-background {
+    transition: $transition-skybackground;
+}
+
+.js-sunset {
+    background: var(--color-sunset);
+}
+.js-night {
+    background: var(--color-night);
+}
+.js-sunrise {
+    background: var(--color-sunrise);
+}
