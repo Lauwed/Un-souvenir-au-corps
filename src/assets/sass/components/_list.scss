@@ -3,6 +3,7 @@ ul {
 
     li {
         position: relative;
+        margin-bottom: $margin*2;
 
         &::before {
             content: '—';

@@ -1,8 +1,10 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: [
-        './src/index.js'
+        './src/index.js',
+        './src/assets/sass/app.scss'
     ],
     devtool: 'inline-source-map',
     module: {
@@ -19,7 +21,15 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: { outputPath: 'assets/styles/', name: '[name].min.css'}
+                    },
+                    'postcss-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -32,5 +42,11 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+          filename: "[name].css",
+          chunkFilename: "[id].css"
+        })
+    ]
 }

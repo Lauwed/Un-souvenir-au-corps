@@ -1,0 +1,31 @@
+.nav {
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+        display: none; 
+    }
+
+    &__list {
+        display: flex;
+    }
+    &__el {
+        margin-right: $margin*4;
+        &::before {
+            display: none;
+        }
+
+        a {
+            border-bottom: 1px solid var(--color-text);
+            display: inline-block;
+            transition: all .3s ease-out;
+            font-size: 1.5625rem; /* 25px */
+            &:focus, &:hover {
+                font-variation-settings: 'wght' 100, 'wdth' 175;
+                border-bottom-width: 3px;
+            }
+        }
+    }
+}

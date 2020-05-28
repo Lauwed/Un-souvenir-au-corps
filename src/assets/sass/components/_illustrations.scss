@@ -1,0 +1,19 @@
+.plant {
+    display: flex;
+    justify-content: center;
+    margin: $margin*4 0;
+
+    &__svg {
+        display: inline-block;
+        position: relative;
+        width: 40%;
+        vertical-align: middle;
+        overflow: hidden;
+    }
+    &__el {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
