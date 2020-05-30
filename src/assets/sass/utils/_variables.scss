@@ -1,17 +1,30 @@
 /* ===== CSS VARIABLES ===== */
 :root {
-    /* == BACKGROUND COLOR ==== */
-    --color-night: #052957;
-    --color-sunset: #7E88B2;
-    --color-sunrise: #788692;
 
     /* == TEXT COLOR == */
     --color-text: #2B2B2B;
-    --color-white: #F7F7F7;
+
+    /* == FRAME BG COLOR == */
+    --bg-frame: transparent;
+
+    /* == ILLUSTRATION TOP POSITION == */
+    --content-top: 0;
 
     /* == WHEEL ROTATIONS == */
     --wheel-rotation: 0deg;
 }
+
+/* ===== SASS VARIABLES ===== */
+
+$color-black: #2B2B2B;
+$color-grey: #E2E2E2;
+$color-white: #F7F7F7;
+
+$color-night: #052957;
+$color-sunset: #7E88B2;
+$color-sunrise: #788692;
+
+$color-black-transpa: transparentize($color-black, .3);
 
 /* ===== SCREEN MEDIA ===== */
 $small: 520px;

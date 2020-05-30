@@ -1,5 +1,5 @@
 blockquote {
-    margin: $margin*5 0;
+    margin: 0 0 $margin*5;
 
     h1 + & {
         margin: 0;
@@ -34,5 +34,11 @@ blockquote {
                 right: -$margin*4;
             }
         }
+    }
+}
+
+p {
+    & + blockquote {
+        margin-top: $margin*5;
     }
 }

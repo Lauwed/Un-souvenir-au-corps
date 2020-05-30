@@ -9,6 +9,8 @@ body {
     font-size: 1.125rem; /* 18px */
     line-height: 1.7;
 
+    transition: color .3s ease-out;
+
     @include screen-medium {
         font-size: 1.3125rem; /* 21px */
     }
@@ -68,6 +70,16 @@ a {
     }
 }
 
+.text-hidden {
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+}
+
 .bold {
     font-variation-settings: 'wght' 100, 'wdth' 175;
 }
@@ -76,12 +88,22 @@ a {
 }
 
 .logo {
+    margin: 0;
     white-space: nowrap;
     text-indent: -500%;
     overflow: hidden;
     position: relative;
     width: 100%;
     height: $margin*20;
+    margin-bottom: $margin*5;
+
+    @include screen-medium {
+        margin-bottom: $margin*10;
+    }
+    @include screen-large {
+        height: $margin*30;
+        margin-bottom: 0;
+    }
 
     &::before {
         content: '';

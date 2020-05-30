@@ -1,4 +1,7 @@
-import CycleWheel from './components/CycleWheel';
-import SkyBackground from './components/SkyBackground';
+import ScreenFrame from './components/ScreenFrame';
 
-let skyBackground = new SkyBackground(new CycleWheel()).init();
+window.addEventListener('load', function(event) {
+    const HTMLNodeExperience = document.querySelector('.experience');
+    const screenFrame = new ScreenFrame(HTMLNodeExperience);
+    screenFrame.init();
+})
