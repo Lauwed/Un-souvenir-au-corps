@@ -32,18 +32,41 @@
 
 
     &-content {
+        width: 70%;
+
         transition: transform .3s ease-out;
+
+        @include screen-medium {
+            width: 50%;
+        }
 
         &--hidden {
             position: fixed;
             top: 50%;
-            left: 0;
-            transform: translateX(-100vw) translateY(-50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: -1;
+
+            transition: opacity .2s ease-in;
         }
         &--active {
-            transform: translateX(0) translateY(-50%);
+            opacity: 1;
 
-            transition: transform .3s ease-out;
+            transition: opacity .4s ease-out .2s;
+        }
+
+        /* CUSTOM CSS FOR THE ILLUSTRATIONS */
+        &.plant {
+            height: 50%;
+            g {
+                stroke: $color-black;
+            }
+        }
+        &.cycle {
+            @include screen-medium {
+                width: 30%;
+            }
         }
     }
 }

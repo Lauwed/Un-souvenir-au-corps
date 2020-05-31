@@ -1,3 +1,11 @@
+/*
+ * TODO :
+ * - On resize
+ * - animation svg
+ * - améliorer longueur visibilité animation
+ * - Revoir apparition des SVG
+*/
+
 export default class ScreenFrame {
     /**
      * Sets the different variables of the class
@@ -55,7 +63,7 @@ export default class ScreenFrame {
 
         console.log(this.startY, this.endY);
 
-        window.addEventListener('scroll', function(event) {
+        window.addEventListener('scroll', function() {
             this.setPosY(window.scrollY);
             
             if(this.posY >= this.startY && this.posY <= this.endY) {
@@ -83,8 +91,6 @@ export default class ScreenFrame {
                     }
                     // Show the content
                     this.contentElements[this.activeSection].classList.add('frame-content--active');
-                    // Update the top position CSS
-                    document.documentElement.style.setProperty('--content-top', window.scrollY + 'px');
                 }
             }
             else {
