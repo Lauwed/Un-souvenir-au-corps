@@ -52,8 +52,12 @@ header {
 }
 
 .experience {
-    margin: $margin*20 0;
-    padding-top: $margin*4;
+    padding: $margin*24 0 $margin*20;
+
+    @include screen-large {
+        padding: 0;
+    }
+
     section {
         display: flex;
         flex-direction: column;

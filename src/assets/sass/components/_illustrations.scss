@@ -9,7 +9,7 @@
     padding: 0 $margin*5;
     z-index: -1;
     height: 100%;
-    width: 100%;
+    width: 50%;
 
     &--fixed {
         position: fixed;
@@ -39,6 +39,9 @@
         @include screen-medium {
             width: 50%;
         }
+        @include screen-large {
+            width: 25vw;
+        }
 
         &--hidden {
             position: fixed;
@@ -49,6 +52,10 @@
             z-index: -1;
 
             transition: opacity .2s ease-in;
+
+            @include screen-large {
+                left: 25%;
+            }
         }
         &--active {
             opacity: 1;
@@ -66,6 +73,9 @@
         &.cycle {
             @include screen-medium {
                 width: 30%;
+            }
+            @include screen-large {
+                width: 20vw;
             }
         }
     }

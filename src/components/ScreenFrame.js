@@ -70,6 +70,8 @@ export default class ScreenFrame {
                 // Tell the frame to be fixed position
                 console.log(window.scrollY, this.startY, this.endY);
                 this.frame.classList.add('frame--fixed');
+                // Add class on the body for custom CSS
+                document.body.classList.add('frame-active');
                 // Change background color
                 document.documentElement.style.setProperty('--frame-bg', this.blackAlpha);
                 // Change color text
@@ -103,6 +105,8 @@ export default class ScreenFrame {
                     // Set the frame position at the beginning of the HTML Element
                     this.frame.style.top = this.startY + 'px';
                 }
+                // Remove the class on the body
+                document.body.classList.remove('frame-active');
                 // hide the old content
                 this.contentElements[this.oldSection].classList.remove('frame-content--active');
                 // Set the top CSS property of the frame

@@ -96,6 +96,9 @@ a {
     width: 100%;
     height: $margin*20;
     margin-bottom: $margin*5;
+    opacity: 1;
+
+    transition: opacity .3s ease-out;
 
     @include screen-medium {
         margin-bottom: $margin*10;
@@ -113,5 +116,11 @@ a {
         position: absolute;
         top: 0;
         left: 0;
+    }
+}
+
+.frame-active {
+    .logo {
+        opacity: 0;
     }
 }
