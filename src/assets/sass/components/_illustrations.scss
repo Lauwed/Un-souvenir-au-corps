@@ -35,15 +35,13 @@
         transition: transform .3s ease-out;
 
         &--hidden {
-            position: absolute;
+            position: fixed;
+            top: 50%;
             left: 0;
-            top: var(--content-top);
-            transform: translateX(-100vw);
+            transform: translateX(-100vw) translateY(-50%);
         }
         &--active {
-            position: fixed;
-            top: 0; 
-            transform: translateX(0);
+            transform: translateX(0) translateY(-50%);
 
             transition: transform .3s ease-out;
         }

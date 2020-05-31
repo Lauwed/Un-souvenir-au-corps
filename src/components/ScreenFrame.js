@@ -19,6 +19,13 @@ export default class ScreenFrame {
         this.contentElements = document.querySelectorAll('.frame-content');
         this.contentSections = document.querySelectorAll('.frame-section');
 
+        // Get total heights of all the content images
+        let elementsTotalHeight = 0;
+        this.contentElements.forEach(element => {
+            elementsTotalHeight += element.clientHeight;
+            console.log(element.clientHeight);
+        });
+
         this.startY = HTMLNodeStart.offsetTop;
         // If the parameter HTMLNodeEnd is set
         if(HTMLNodeEnd) {
@@ -26,9 +33,8 @@ export default class ScreenFrame {
         }
         else {
             // If not, use the bottom position of the element HTMLNodeStart
-            this.endY = HTMLNodeStart.offsetHeight;
+            this.endY = HTMLNodeStart.offsetTop + HTMLNodeStart.offsetHeight - elementsTotalHeight;
         }
-        console.log(this.endY, HTMLNodeStart.offsetHeight, HTMLNodeStart.offsetTop);
     }
 
     /**
@@ -40,19 +46,21 @@ export default class ScreenFrame {
         // Add the class to hide images
         this.contentElements.forEach(element => {
             element.classList.add('frame-content--hidden');
-        })
+        });
 
         this.frame = this.createHTMLNodeFrame();
         // Update this.endY
         this.endY -= this.frame.offsetHeight;
         this.frame.style.top = this.startY + 'px'; // Set the position at the beginning of the HTML element
 
+        console.log(this.startY, this.endY);
+
         window.addEventListener('scroll', function(event) {
             this.setPosY(window.scrollY);
             
             if(this.posY >= this.startY && this.posY <= this.endY) {
                 // Tell the frame to be fixed position
-                console.log(window.scrollY, this.startY, document.querySelector('.experience').offsetTop);
+                console.log(window.scrollY, this.startY, this.endY);
                 this.frame.classList.add('frame--fixed');
                 // Change background color
                 document.documentElement.style.setProperty('--frame-bg', this.blackAlpha);
