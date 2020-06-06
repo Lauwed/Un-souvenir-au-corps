@@ -13,8 +13,7 @@ blockquote {
 
         &::before, &::after {
             position: absolute;
-            color: var(--color-text);
-            transition: $transition-skybackground;
+            color: $color-black;
         }
         &::before {
             content: "«";

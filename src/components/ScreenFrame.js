@@ -28,21 +28,29 @@ export default class ScreenFrame {
         this.contentSections = document.querySelectorAll('.frame-section');
 
         // Get total heights of all the content images
-        let elementsTotalHeight = 0;
-        this.contentElements.forEach(element => {
-            elementsTotalHeight += element.clientHeight;
-            console.log(element.clientHeight);
-        });
+        // let elementsTotalHeight = 0;
+        // this.contentElements.forEach(element => {
+        //     elementsTotalHeight += element.clientHeight;
+        //     console.log(element.clientHeight);
+        // });
 
-        this.startY = HTMLNodeStart.offsetTop;
-        // If the parameter HTMLNodeEnd is set
-        if(HTMLNodeEnd) {
-            this.endY = HTMLNodeEnd.offsetHeight;
-        }
-        else {
-            // If not, use the bottom position of the element HTMLNodeStart
-            this.endY = HTMLNodeStart.offsetTop + HTMLNodeStart.offsetHeight - elementsTotalHeight;
-        }
+        this.startY = this.contentSections[0].offsetTop;
+        // // If the parameter HTMLNodeEnd is set
+        // if(HTMLNodeEnd) {
+        //     this.endY = HTMLNodeEnd.offsetHeight;
+        // }
+        // else {
+        //     // If not, use the bottom position of the element HTMLNodeStart
+        //     this.endY = HTMLNodeStart.offsetTop + HTMLNodeStart.offsetHeight - elementsTotalHeight;
+        // }
+        this.contentLastSection = this.contentSections[this.contentSections.length-1].querySelectorAll('.frame-content');
+        let elementsTotalHeight = 0;
+        this.contentLastSection.forEach(element => {
+            elementsTotalHeight += element.clientHeight;
+        });
+        this.endY = this.contentSections[this.contentSections.length-1].offsetTop + this.contentSections[this.contentSections.length-1].offsetHeight - elementsTotalHeight;
+
+        console.log(this.isIpad());
     }
 
     /**
@@ -58,24 +66,29 @@ export default class ScreenFrame {
 
         this.frame = this.createHTMLNodeFrame();
         // Update this.endY
-        this.endY -= this.frame.offsetHeight;
-        this.frame.style.top = this.startY + 'px'; // Set the position at the beginning of the HTML element
+
+        // If this is an iPad, the calculation of the height
+        // acting differently. No need to subtract the height
+        // of the frame
+        if(!this.isIpad()) {
+            this.endY -= this.frame.offsetHeight;
+        }
+        //this.frame.style.top = this.startY + 'px'; // Set the position at the beginning of the HTML element
 
         console.log(this.startY, this.endY);
 
         window.addEventListener('scroll', function() {
-            this.setPosY(window.scrollY);
+            this.setPosY(window.scrollY + (window.innerHeight/2));
             
             if(this.posY >= this.startY && this.posY <= this.endY) {
                 // Tell the frame to be fixed position
-                console.log(window.scrollY, this.startY, this.endY);
                 this.frame.classList.add('frame--fixed');
                 // Add class on the body for custom CSS
                 document.body.classList.add('frame-active');
-                // Change background color
-                document.documentElement.style.setProperty('--frame-bg', this.blackAlpha);
-                // Change color text
-                document.documentElement.style.setProperty('--color-text', this.white);
+                // Change color text if this is small screen
+                if(window.outerWidth < 1024) {
+                    document.documentElement.style.setProperty('--color-text', this.white);
+                }
 
                 // To know which section the scroll is on
                 this.contentSections.forEach((section, index) => {
@@ -96,14 +109,13 @@ export default class ScreenFrame {
                 }
             }
             else {
-                console.log('coucou');
                 if(this.posY > this.endY) {
                     // Set the frame position at the end of the HTML Element
-                    this.frame.style.top = this.endY + 'px';
+                    //this.frame.style.top = this.endY + 'px';
                 }
                 else {
                     // Set the frame position at the beginning of the HTML Element
-                    this.frame.style.top = this.startY + 'px';
+                    //this.frame.style.top = this.startY + 'px';
                 }
                 // Remove the class on the body
                 document.body.classList.remove('frame-active');
@@ -111,8 +123,6 @@ export default class ScreenFrame {
                 this.contentElements[this.oldSection].classList.remove('frame-content--active');
                 // Set the top CSS property of the frame
                 this.frame.classList.remove('frame--fixed');
-                // Change background color
-                document.documentElement.style.setProperty('--frame-bg', 'transparent');
                 // Change color text
                 document.documentElement.style.setProperty('--color-text', this.black);
             }
@@ -152,5 +162,18 @@ export default class ScreenFrame {
         document.querySelector('main').appendChild(container);
 
         return container;
+    }
+
+
+    /**
+     * Returns true if the user is on an Ipad
+     * 
+     * @returns {bool} true or false
+     */
+    isIpad() {
+        if (/iPad/.test(navigator.userAgent) && !window.MSStream) {
+            return true
+        }
+        return false;
     }
 }

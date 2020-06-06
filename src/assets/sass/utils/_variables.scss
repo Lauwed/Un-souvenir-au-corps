@@ -16,6 +16,8 @@
 
 /* ===== SASS VARIABLES ===== */
 
+/* == COLORS == */
+
 $color-black: #2B2B2B;
 $color-grey: #E2E2E2;
 $color-white: #F7F7F7;
@@ -26,18 +28,22 @@ $color-sunrise: #788692;
 
 $color-black-transpa: transparentize($color-black, .3);
 
-/* ===== SCREEN MEDIA ===== */
+/* EMOTION COLORS */
+
+$color-coquelicot: #FF4747;
+$color-robin: #FFA947;
+$color-brenda: #EEFF47;
+$color-feuille: #51FF47;
+$color-ciel: #47E8FF;
+$color-mure: #A047FF;
+$color-rose: #FF476F;
+
+/* == SCREEN MEDIA == */
 $small: 520px;
 $medium: 768px;
 $large: 1024px;
 $xl: 1440px;
 $xxl: 1700px;
 
-/* ===== MARGIN ===== */
+/* == MARGIN == */
 $margin: 6px;
-
-/* ===== TRANSITIONS ===== */
-$transition-time: 2s;
-$transition-easing: linear;
-$transition-skybackground: background $transition-time $transition-easing,
-                        color $transition-time $transition-easing;
